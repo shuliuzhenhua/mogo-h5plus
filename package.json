@@ -25,10 +25,15 @@
     "postcss-px-to-viewport": "0.0.3",
     "postcss-viewport-units": "^0.1.6",
     "postcss-write-svg": "^3.0.1",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^3.0.2",
     "vant": "^1.1.10",
     "vconsole": "^3.2.0",
     "vue": "^2.5.2",
-    "vux": "^2.9.2"
+    "vue-router": "^3.0.1",
+    "vuex": "^3.0.1",
+    "vux": "^2.9.2",
+    "vux-loader": "^1.2.9"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
@@ -64,8 +69,6 @@
     "html-webpack-plugin-for-multihtml": "^2.30.2",
     "jest": "^22.0.4",
     "jest-serializer-vue": "^0.3.0",
-    "less": "^3.0.4",
-    "less-loader": "^4.1.0",
     "node-notifier": "^5.1.2",
     "nodemon": "^1.17.5",
     "optimize-css-assets-webpack-plugin": "^3.2.0",
@@ -84,7 +87,6 @@
     "vue-loader": "^13.3.0",
     "vue-style-loader": "^3.0.1",
     "vue-template-compiler": "^2.5.2",
-    "vux-loader": "^1.2.9",
     "webpack": "^3.6.0",
     "webpack-bundle-analyzer": "^2.9.0",
     "webpack-dev-server": "^2.9.1",
