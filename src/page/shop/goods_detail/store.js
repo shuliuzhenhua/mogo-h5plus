@@ -16,8 +16,8 @@ const state = {
   },
   content: '',
   sku: {
-    sku: '',
-    goods: '',
+    sku: {},
+    goods: {},
     goodsId: '',
     hideStock: false
   }
@@ -71,6 +71,16 @@ const getters = {
       info.price =  '￥' + info.min_price + ' - ' + '￥' + info.max_price
     }
     return info;
+  },
+  skuName (state) {
+    let name = '';
+    if (!state.sku.sku.none_sku && state.sku.sku.tree) {
+      state.sku.sku.tree.map(sku => {
+        name += sku.k + ' ';
+      });
+      name = '选择：' + name;
+    }
+    return name;
   }
 };
 
