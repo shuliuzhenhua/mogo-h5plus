@@ -71,7 +71,13 @@ export function close(id = null, style = null) {
   plus.webview.close(id, style);
 }
 
-
+/**
+ * 隐藏当前窗口
+ */
+export function hide() {
+  let current = plus.webview.currentWebview();
+  plus.webview.hide(current.id, 'auto');
+}
 
 
 

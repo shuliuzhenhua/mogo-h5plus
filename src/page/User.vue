@@ -22,12 +22,13 @@
       userModules
     },
     created () {
-      localStorage.setItem('token', '1961b7103047d95198f2750918bd4125');
-      this.getUserInfo();
-      this.getOrderStatusCount();
+      if (this.isLogin) {
+        this.getUserInfo();
+        this.getOrderStatusCount();
+      }
     },
     computed: {
-      ...mapState('user', ['userInfo', 'statusCount'])
+      ...mapState('user', ['isLogin', 'userInfo', 'statusCount'])
     },
     methods: {
       ...mapActions('user', [
