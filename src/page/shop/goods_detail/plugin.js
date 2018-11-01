@@ -1,3 +1,23 @@
 import Vue from 'vue';
-import { SwipeItem, Swipe, Lazyload, CellGroup, Cell, Sku } from 'vant';
-Vue.use(SwipeItem).use(Swipe).use(Lazyload).use(CellGroup).use(Cell).use(Sku);
+import {
+  SwipeItem,
+  Swipe,
+  Lazyload,
+  CellGroup,
+  Cell,
+  Sku,
+  GoodsAction,
+  GoodsActionBigBtn,
+  GoodsActionMiniBtn,
+  Button
+} from 'vant';
+Vue.use(SwipeItem)
+  .use(Swipe)
+  .use(Lazyload)
+  .use(CellGroup)
+  .use(Cell)
+  .use(Sku)
+  .use(GoodsAction)
+  .use(GoodsActionBigBtn)
+  .use(GoodsActionMiniBtn)
+  .use(Button);
