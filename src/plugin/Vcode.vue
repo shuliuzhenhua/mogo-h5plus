@@ -19,7 +19,7 @@ export default {
   data() {
     return {
       code: '',
-      codeLength: 6,
+      codeLength: 4,
       telDisabled: false,
       focused: false,
     };
@@ -38,13 +38,15 @@ export default {
   },
   watch: {
     value() {
-      this.code = this.value;
+      if (this.value.length <= this.codeLength) {
+        // this.code = this.value;
+      }
     },
     code(newVal) {
       this.$emit('update', newVal);
       this.code = newVal.replace(/[^\d]/g, '');
 
-      if (newVal.length === 6) {
+      if (newVal.length === this.codeLength) {
         this.$refs.vcode.blur();
         this.$emit('finished', newVal);
       }

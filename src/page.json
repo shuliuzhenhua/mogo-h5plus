@@ -1,5 +1,6 @@
 {
   "index": "./src/main.js",
   "shop.goods_detail": "./src/page/shop/goods_detail/index.js",
-  "user.login": "./src/page/user/login/index.js"
+  "user.login": "./src/page/user/login/index.js",
+  "user.login_code": "./src/page/user/login_code/index.js"
 }

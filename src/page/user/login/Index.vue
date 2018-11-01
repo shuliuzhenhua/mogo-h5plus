@@ -35,6 +35,8 @@
 
 <script>
 import validator from './validate';
+import { open } from "../../../utils/view";
+
 export default {
   data () {
     return {
@@ -50,7 +52,7 @@ export default {
   methods: {
     login () {
       validator(this.$data).then(() => {
-        alert('登录');
+        open('user.login_code', {}, {mobile: this.mobile});
       })
     },
     wechatLogin () {
