@@ -10,7 +10,7 @@
 export default {
   props: {
     mobile: {
-      type: Number
+      type: String
     }
   }
 }

@@ -14,11 +14,12 @@
 import LoginCodeContent from '../../../components/user/login_code/Content';
 import LoginCodeRequest from '../../../components/user/login_code/Request';
 import LoginCodeFooter from '../../../components/user/login_code/Footer';
-import validator from './validate';
+import { current } from "../../../utils/view";
+
 export default {
   data () {
     return {
-      mobile: 0
+      mobile: ''
     }
   },
   components: {
@@ -27,7 +28,14 @@ export default {
     LoginCodeFooter
   },
   created () {
-    this.mobile = 15874068303
+    this.mobile = current().mobile;
+    this.$http
+      .get({
+        url: '../send_code',
+        params: {
+          mobile: this.mobile,
+        },
+      });
   }
 }
 </script>

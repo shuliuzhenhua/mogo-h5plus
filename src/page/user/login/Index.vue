@@ -9,7 +9,7 @@
 
 
         <div class="field van-hairline--bottom">
-          <van-field v-model="mobile" placeholder="输入手机号" type="number" />
+          <van-field v-model="mobile" placeholder="输入手机号" type="tel" />
         </div>
 
         <div>
@@ -35,12 +35,13 @@
 
 <script>
 import validator from './validate';
-import { open } from "../../../utils/view";
+import { open, close } from "../../../utils/view";
 
 export default {
   data () {
     return {
       mobile: '',
+      lastMobile: '',
       sure: false
     }
   },
@@ -52,7 +53,17 @@ export default {
   methods: {
     login () {
       validator(this.$data).then(() => {
-        open('user.login_code', {}, {mobile: this.mobile});
+        if (this.mobile === this.lastMobile) {
+          open('user.login_code', {}, {mobile: this.mobile});
+        } else {
+          this.lastMobile = this.mobile;
+          close('user.login_code', 'none');
+          console.log(this.lastMobile);
+          console.log(this.mobile);
+          setTimeout(() => {
+            open('user.login_code', {}, {mobile: this.mobile});
+          }, 300)
+        }
       })
     },
     wechatLogin () {

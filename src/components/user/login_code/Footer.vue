@@ -11,42 +11,56 @@
 </template>
 
 <script>
-  export default {
-    props: {
-      mobile: {
-        type: Number
-      }
+export default {
+  props: {
+    mobile: {
+      type: String,
     },
-    data () {
-      return {
-        isSend: true,
-        content: '60 秒后重新发送',
-      }
+  },
+  data() {
+    return {
+      isSend: true,
+      content: '60 秒后重新发送',
+    };
+  },
+  created() {
+    this.timeInit();
+  },
+  methods: {
+    timeInit() {
+      let second = 60;
+      const timer = setInterval(() => {
+        second--;
+        if (second) {
+          this.content = `${second} 秒重新发送`;
+        } else {
+          this.isSend = false;
+          clearInterval(timer);
+        }
+      }, 1000);
     },
-    created () {
-      this.timeInit();
+    sendSms() {
+      this.isSend = true;
+      this.$http
+        .get({
+          url: '../send_code',
+          params: {
+            mobile: this.mobile,
+          },
+        })
+        .then(res => {
+          this.timeInit();
+          this.$toast(res.msg);
+        })
+        .catch(() => {
+          this.timeInit();
+        });
     },
-    methods: {
-      timeInit() {
-        let second = 60;
-        const timer = setInterval(() => {
-          second--;
-          if (second) {
-            this.content = `${second} 秒重新发送`;
-          } else {
-            this.isSend = false;
-            clearInterval(timer);
-          }
-        }, 1000);
-      },
-      sendSms () {
-        alert('重新发送短信')
-      },
-      passwordLogin () {
-        alert('密码登录')
-      }
-    }
-  }
+    passwordLogin() {
+      alert('密码登录');
+    },
+  },
+};
 </script>
 
 <style scoped lang="stylus">
