@@ -1,34 +1,3 @@
-# 开发文档
-- 页面放pages 下 除了tabbar 页面外
-- pages 下的页面按照 文件夹分
-
-store 模板
-
-```
-import Vue from 'vue';
-import Vuex from 'vuex';
-Vue.use(Vuex);
-
-const state = {};
-
-const actions = {};
-
-const mutations = {};
-
-const getters = {};
-
-export default new Vuex.Store({
-  state,
-  actions,
-  mutations,
-  getters
-});
-
-```
-
-index.js 模板
-
-```
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from "vue";
@@ -47,7 +16,3 @@ new Vue({
   store,
   render: h => h(App)
 });
-
-```
-
-
