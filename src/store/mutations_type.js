@@ -1,1 +1,3 @@
 export const GET_HOME_DATA = 'GET_HOME_DATA';
+export const GET_USER_INFO = 'GET_USER_INFO';
+export const GET_ORDER_STATUS_COUNT = 'GET_ORDER_STATUS_COUNT';

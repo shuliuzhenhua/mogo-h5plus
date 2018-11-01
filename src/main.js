@@ -2,6 +2,7 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from "vue";
 import "./utils/common";
+import 'styles/iconfont.css';
 import 'styles/reset.css'
 import store from './store';
 import router from './router';
