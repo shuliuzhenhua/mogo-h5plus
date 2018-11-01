@@ -6,7 +6,6 @@ import http from '@/utils/http';
 
 const state = {
   banner: [],
-  mainImg: '',
   info: {
     title: '',
     desc: '',
@@ -40,8 +39,6 @@ const mutations = {
     const data = payload.data;
     console.log(data);
     state.banner = data.picture;
-
-    state.mainImg = data.main_img;
 
     state.info = {
       title: data.title,

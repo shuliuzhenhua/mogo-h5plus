@@ -9,7 +9,8 @@ import {
   GoodsAction,
   GoodsActionBigBtn,
   GoodsActionMiniBtn,
-  Button
+  Button,
+  NavBar
 } from 'vant';
 Vue.use(SwipeItem)
   .use(Swipe)
@@ -20,4 +21,5 @@ Vue.use(SwipeItem)
   .use(GoodsAction)
   .use(GoodsActionBigBtn)
   .use(GoodsActionMiniBtn)
-  .use(Button);
+  .use(Button)
+  .use(NavBar);

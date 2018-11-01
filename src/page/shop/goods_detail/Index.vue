@@ -1,5 +1,10 @@
 <template>
-  <div>
+  <div class="goods-detail">
+    <van-nav-bar
+      title="商品详情"
+      left-arrow
+      @click-left="$toast('关闭当前页面')"
+    />
     <goods-banner :banner="banner"></goods-banner>
     <goods-info :info="goodsInfo"></goods-info>
 
@@ -38,7 +43,7 @@
 
     </van-sku>
 
-    <goods-content></goods-content>
+    <goods-content :content="content"></goods-content>
     <goods-action @showSku="showSku"></goods-action>
   </div>
 </template>
@@ -70,7 +75,7 @@ export default {
     this.getGoodsDetail({ goodsId });
   },
   computed: {
-    ...mapState(['banner', 'mainImg', 'content', 'sku', 'hideStock']),
+    ...mapState(['banner', 'content', 'sku']),
     ...mapGetters(['goodsInfo', 'skuName']),
   },
   methods: {
@@ -90,5 +95,6 @@ export default {
 </script>
 
 <style scoped lang="stylus">
-
+  .goods-detail
+    padding-bottom: 50px
 </style>
