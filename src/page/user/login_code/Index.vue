@@ -14,30 +14,29 @@
 import LoginCodeContent from '../../../components/user/login_code/Content';
 import LoginCodeRequest from '../../../components/user/login_code/Request';
 import LoginCodeFooter from '../../../components/user/login_code/Footer';
-import { current } from "../../../utils/view";
+import { current } from '../../../utils/view';
 
 export default {
-  data () {
+  data() {
     return {
-      mobile: ''
-    }
+      mobile: '',
+    };
   },
   components: {
     LoginCodeContent,
     LoginCodeRequest,
-    LoginCodeFooter
+    LoginCodeFooter,
   },
-  created () {
+  created() {
     this.mobile = current().mobile;
-    this.$http
-      .get({
-        url: '../send_code',
-        params: {
-          mobile: this.mobile,
-        },
-      });
-  }
-}
+    this.$http.get({
+      url: '../send_code',
+      params: {
+        mobile: this.mobile,
+      },
+    });
+  },
+};
 </script>
 
 <style scoped lang="stylus">

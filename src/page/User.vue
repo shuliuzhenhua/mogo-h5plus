@@ -21,8 +21,9 @@
       userOrder,
       userModules
     },
-    created () {
-      if (this.isLogin) {
+    activated() {
+      let token = localStorage.getItem('token');
+      if (token && !this.userInfo.name) {
         this.getUserInfo();
         this.getOrderStatusCount();
       }

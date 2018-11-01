@@ -16,7 +16,6 @@
 
 <script>
 import { Tabbar, TabbarItem } from 'vant';
-import { mapState } from 'vuex';
 import { open } from '../../utils/view';
 
 export default {
@@ -66,9 +65,6 @@ export default {
   watch: {
     $route: 'changeActive',
   },
-  computed: {
-    ...mapState('user', ['isLogin']),
-  },
   created() {
     const toName = this.$route.name;
     this.setActive(toName);
@@ -80,8 +76,8 @@ export default {
     setActive(name) {
       this.tabs.forEach((tab, i) => {
         if (tab.pathName === name) {
-          console.log(name);
-          if ((name === 'user' || name === 'message') && this.isLogin === false) {
+          let token = localStorage.getItem('token');
+          if ((name === 'user' || name === 'message') && !token) {
             this.$router.back();
             open('user.login');
           } else {

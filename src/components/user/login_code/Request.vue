@@ -9,6 +9,8 @@
 <script>
 import Vue from 'vue';
 import { Vcode } from '../../../plugin/index';
+import {toIndex} from "../../../utils/view";
+
 Vue.use(Vcode);
 export default {
   data() {
@@ -26,7 +28,20 @@ export default {
       this.handleBtnSubmit()
     },
     handleBtnSubmit () {
-      alert('提交')
+      this.$http.post({
+        url: 'connect/mobile',
+        data: {
+          mobile: this.mobile,
+          code: this.code
+        }
+      }).then(res => {
+        let token = res.data;
+        localStorage.setItem('isLogin', '1');
+        localStorage.setItem('token', token);
+        setTimeout(() => {
+          toIndex();
+        }, 200)
+      })
     }
   }
 };
