@@ -1,4 +1,4 @@
 {
   "index": "./src/main.js",
-  "goods_detail": "./src/page/shop/goods_detail/index.js"
+  "shop.goods_detail": "./src/page/shop/goods_detail/index.js"
 }

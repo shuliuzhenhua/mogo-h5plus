@@ -1,8 +1,6 @@
 <template>
   <div>
-    <van-cell>
-      商品详情
-    </van-cell>
+    <van-cell title="商品详情" />
     <div v-html="content" class="content"></div>
   </div>
 </template>

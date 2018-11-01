@@ -3,7 +3,7 @@
     <van-nav-bar
       title="商品详情"
       left-arrow
-      @click-left="$toast('关闭当前页面')"
+      @click-left="$close()"
     />
     <goods-banner :banner="banner"></goods-banner>
     <goods-info :info="goodsInfo"></goods-info>
@@ -54,7 +54,8 @@ import GoodsAction from '@/components/shop/goods_detail/Action';
 import GoodsBanner from '@/components/shop/goods_detail/Banner';
 import GoodsContent from '@/components/shop/goods_detail/Content';
 import GoodsInfo from '@/components/shop/goods_detail/Info';
-import GoodsSku from '@/components/shop/goods_detail/Sku';
+import { current } from "../../../utils/view";
+
 export default {
   name: 'goods',
   components: {
@@ -62,7 +63,6 @@ export default {
     GoodsBanner,
     GoodsContent,
     GoodsInfo,
-    GoodsSku,
   },
   data() {
     return {
@@ -71,7 +71,7 @@ export default {
     };
   },
   created() {
-    let goodsId = 100007;
+    let goodsId = current().goodsId;
     this.getGoodsDetail({ goodsId });
   },
   computed: {

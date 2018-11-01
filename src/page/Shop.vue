@@ -14,6 +14,7 @@
   import ShopBanner from '../components/shop/Banner'
   import ShopTheme from '../components/shop/Theme'
   import ShopProducts from '../components/shop/Products'
+  import { toGoodsDetail } from '../utils/view';
   export default {
     name: 'home',
     components: {
@@ -40,7 +41,7 @@
        * @param goods
        */
       handleGoodsClick (goods) {
-        alert('去商品详情');
+        toGoodsDetail(goods.goods_id);
       },
       handleMoreClick() {
         alert('查看更多');

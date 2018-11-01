@@ -1,6 +1,6 @@
 <template>
   <van-goods-action>
-    <van-goods-action-mini-btn icon="home" text="首页" @click="$toast('去首页')" />
+    <van-goods-action-mini-btn icon="home" text="首页" @click="toIndex" />
     <van-goods-action-mini-btn icon="cart" text="购物车" @click="onClickCart" />
     <van-goods-action-big-btn text="加入购物车" @click="onClickAddCart" />
     <van-goods-action-big-btn text="立即购买" @click="onClickBuy" primary />
@@ -8,6 +8,8 @@
 </template>
 
 <script>
+import { toIndex } from "../../../utils/view";
+
 export default {
   methods: {
     onClickCart() {
@@ -18,6 +20,9 @@ export default {
     },
     onClickBuy() {
       this.$emit('showSku', 'buy')
+    },
+    toIndex () {
+      toIndex();
     }
   }
 }
