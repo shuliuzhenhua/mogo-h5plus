@@ -6,7 +6,7 @@ const Home = () => import('./page/Home.vue');
 const Shop = () => import('./page/Shop.vue');
 const Message = () => import('./page/Message.vue');
 const User = () => import('./page/User.vue');
-const Tabbar = () => import('./components/tabbar.vue');
+const Tabbar = () => import('./components/tabbar/');
 
 export default new Router({
   routes: [

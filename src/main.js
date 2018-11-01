@@ -4,9 +4,12 @@ import Vue from "vue";
 import "./utils/common";
 import store from './store';
 import router from './router';
+import http from './utils/http';
+import './plugin.js';
 import App from "./App";
 
 Vue.config.productionTip = false;
+Vue.prototype.$http = http;
 
 /* eslint-disable no-new */
 new Vue({
