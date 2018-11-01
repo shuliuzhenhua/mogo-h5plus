@@ -3,7 +3,7 @@
     <goods-action></goods-action>
     <goods-banner :banner="banner"></goods-banner>
     <goods-content></goods-content>
-    <goods-info></goods-info>
+    <goods-info :info="goodsInfo"></goods-info>
     <goods-sku></goods-sku>
   </div>
 </template>
