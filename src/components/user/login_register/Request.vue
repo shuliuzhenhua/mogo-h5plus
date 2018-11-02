@@ -10,11 +10,20 @@
 </template>
 
 <script>
+import {toIndex} from "../../../utils/view";
+
 export default {
   props: {
     avatar: {
       type: String
-    }
+    },
+    mobile: {
+      type: String
+    },
+    code: {
+      type: String
+    },
+    file: {}
   },
   data() {
     return {
@@ -32,7 +41,22 @@ export default {
   },
   methods: {
     submit () {
-      alert(1)
+      let data = new FormData();
+      data.append('img', this.file);
+      data.append('mobile', this.mobile);
+      data.append('code', this.code);
+      data.append('nickname', this.nickname);
+      console.log(this.file);
+      this.$http.post({
+        url: 'connect/mobile/register',
+        data
+      }).then(res => {
+        let token = res.data;
+        localStorage.setItem('token', token);
+        setTimeout(() => {
+          toIndex();
+        }, 200)
+      })
     }
   }
 }

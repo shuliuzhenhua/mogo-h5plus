@@ -45,7 +45,7 @@ export default {
       }).catch(err => {
         const data = err.response.data;
         if (data.error_code === 10006) {
-          open('user.login_register', { popGesture: 'close' })
+          open('user.login_register', { popGesture: 'close' }, { mobile: this.mobile, code: this.code })
         } else {
           this.$dialog.alert({
             message: data.msg,

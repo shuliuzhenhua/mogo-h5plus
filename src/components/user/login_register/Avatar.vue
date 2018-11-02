@@ -17,7 +17,7 @@ export default {
   },
   methods: {
     onRead(file) {
-      this.$emit('update', file.content);
+      this.$emit('update', file);
     }
   }
 }
