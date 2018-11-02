@@ -10,6 +10,7 @@
 
 <script>
 import bg_default from "@/assets/images/user_head_bg.png";
+import { open } from "../../utils/view";
 
 export default {
   data(){
@@ -24,7 +25,7 @@ export default {
   },
   methods: {
     toSetting () {
-      alert('去设置页面')
+      open('system.setting', { popGesture: 'close' })
     },
     toUserInfo () {
       alert('去用户信息页面')
