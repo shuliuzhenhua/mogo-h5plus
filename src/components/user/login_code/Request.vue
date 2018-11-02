@@ -9,7 +9,7 @@
 <script>
 import Vue from 'vue';
 import { Vcode } from '../../../plugin/index';
-import {toIndex} from "../../../utils/view";
+import { open, toIndex} from "../../../utils/view";
 
 Vue.use(Vcode);
 export default {
@@ -33,7 +33,8 @@ export default {
         data: {
           mobile: this.mobile,
           code: this.code
-        }
+        },
+        handle: true
       }).then(res => {
         let token = res.data;
         localStorage.setItem('isLogin', '1');
@@ -41,6 +42,15 @@ export default {
         setTimeout(() => {
           toIndex();
         }, 200)
+      }).catch(err => {
+        const data = err.response.data;
+        if (data.error_code === 10006) {
+          open('user.login_register', { popGesture: 'close' })
+        } else {
+          this.$dialog.alert({
+            message: data.msg,
+          });
+        }
       })
     }
   }
@@ -48,9 +58,8 @@ export default {
 </script>
 
 <style scoped lang="stylus">
-  .disabled
-    background rgba(124, 124, 124, 0.51);
-    color white;
+  @import "~styles/theme.styl"
+  setDisabled();
   >>> .van-button
     border-radius 10px;
     margin 30px 0;

@@ -77,6 +77,8 @@ export default {
 </script>
 
 <style scoped lang="stylus">
+  @import "~styles/theme.styl"
+  setDisabled();
   >>> .van-field__control
     height: 40px
     /*background red*/
@@ -96,9 +98,6 @@ export default {
       font-size: 20px
       font-weight:bold
       margin: 20px 0
-    .disabled
-      background rgba(124, 124, 124, 0.51);
-      color white;
     .password
       color rgba(47, 105, 255, 0.89)
       font-size: 16px
