@@ -64,40 +64,37 @@ export default {
   data() {
     return {
       show: false,
-      actions: [
-        { name: '女'},
-        { name: '男'}
-      ],
-    }
+      actions: [{ name: '女' }, { name: '男' }],
+    };
   },
   computed: {
-    ...mapState(['userInfo'])
+    ...mapState(['userInfo']),
   },
   created() {
     this.getUserInfo();
-    window.addEventListener('event', (event) => {
+    window.addEventListener('event', event => {
       this.update({
-        name: event.detail.nickname
-      })
-    })
+        name: event.detail.nickname,
+      });
+    });
   },
   methods: {
     ...mapActions(['getUserInfo', 'updateAvatar', 'update']),
     updateSex() {
-      this.show = true
+      this.show = true;
     },
     toQrCode() {
-      alert('去看二维码')
+      alert('去看二维码');
     },
     onSelect(item) {
       // 点击选项时默认不会关闭菜单，可以手动关闭
       this.show = false;
       this.update({
-        sex: item.name
-      })
-    }
-  }
-}
+        sex: item.name,
+      });
+    },
+  },
+};
 </script>
 
 <style scoped lang="stylus">
