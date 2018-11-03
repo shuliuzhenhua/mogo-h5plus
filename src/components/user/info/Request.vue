@@ -47,6 +47,13 @@
           <van-icon name="arrow" class="gray" />
         </van-col>
       </div>
+
+      <van-actionsheet
+        v-model="show"
+        :actions="actions"
+        cancel-text="取消"
+        @select="onSelect"
+      />
     </van-row>
   </div>
 </template>
@@ -54,6 +61,15 @@
 <script>
   import { mapActions, mapState } from 'vuex';
 export default {
+  data() {
+    return {
+      show: false,
+      actions: [
+        { name: '女'},
+        { name: '男'}
+      ],
+    }
+  },
   computed: {
     ...mapState(['userInfo'])
   },
@@ -61,15 +77,22 @@ export default {
     this.getUserInfo();
   },
   methods: {
-    ...mapActions(['getUserInfo', 'updateAvatar']),
+    ...mapActions(['getUserInfo', 'updateAvatar', 'update']),
     updateNickname() {
       alert('改变昵称')
     },
     updateSex() {
-      alert('改变性别')
+      this.show = true
     },
     toQrCode() {
       alert('去看二维码')
+    },
+    onSelect(item) {
+      // 点击选项时默认不会关闭菜单，可以手动关闭
+      this.show = false;
+      this.update({
+        sex: item.name
+      })
     }
   }
 }

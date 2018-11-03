@@ -37,6 +37,14 @@ const actions = {
         data: res.data
       })
     })
+  },
+  update({ commit }, payload) {
+    http.put({
+      url: 'user',
+      data: payload
+    }).then(res => {
+      commit('update', {userInfo : res.data})
+    })
   }
 };
 
@@ -50,6 +58,12 @@ const mutations = {
   updateAvatar(state, payload) {
     const data = payload.data;
     state.avatar= data.url;
+  },
+  update(state, payload) {
+    const userInfo = payload.userInfo;
+    state.userInfo.avatar = userInfo.header_img;
+    state.userInfo.nickname = userInfo.name;
+    state.userInfo.sex = userInfo.sex;
   }
 };
 
