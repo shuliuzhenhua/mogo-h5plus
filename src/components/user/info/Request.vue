@@ -17,8 +17,8 @@
     </van-uploader>
     <!--昵称-->
     <van-row class="row nickname">
-      <div @click="updateNickname">
-        <van-col span="5" offset="1" class="gray">修改名字</van-col>
+      <div @click="$open('user.update_nickname', { popGesture: 'close' }, {nickname: userInfo.nickname})">
+        <van-col span="5" offset="1" class="gray">修改昵称</van-col>
         <van-col span="16">{{ userInfo.nickname }}</van-col>
         <van-col span="2">
           <van-icon name="arrow" class="gray" />
@@ -59,7 +59,7 @@
 </template>
 
 <script>
-  import { mapActions, mapState } from 'vuex';
+import { mapActions, mapState } from 'vuex';
 export default {
   data() {
     return {
@@ -75,12 +75,14 @@ export default {
   },
   created() {
     this.getUserInfo();
+    window.addEventListener('event', (event) => {
+      this.update({
+        name: event.detail.nickname
+      })
+    })
   },
   methods: {
     ...mapActions(['getUserInfo', 'updateAvatar', 'update']),
-    updateNickname() {
-      alert('改变昵称')
-    },
     updateSex() {
       this.show = true
     },

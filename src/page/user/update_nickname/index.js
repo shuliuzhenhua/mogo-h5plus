@@ -6,18 +6,17 @@ import 'styles/reset.css';
 import 'styles/iconfont.css';
 import http from '@/utils/http';
 import './plugin.js';
-import store from './store';
-import { close, open } from "../../../utils/view";
+import { close, current, fire } from "../../../utils/view";
 import App from "./Index.vue";
 
 Vue.config.productionTip = false;
 Vue.prototype.$http = http;
 Vue.prototype.$close = close;
-Vue.prototype.$open = open;
+Vue.prototype.$current = current;
+Vue.prototype.$fire = fire;
 
 /* eslint-disable no-new */
 new Vue({
   el: "#app",
-  store,
   render: h => h(App)
 });

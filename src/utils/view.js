@@ -1,3 +1,5 @@
+
+
 /**
  * 打开窗口
  * @param id
@@ -79,7 +81,22 @@ export function hide() {
   plus.webview.hide(current.id, 'auto');
 }
 
-
+/**
+ * 跨网页传输数据
+ * @param id
+ * @param data
+ */
+export function fire(id, data) {
+  let view = plus.webview.getWebviewById(id);
+  let eventType = 'event';
+  view &&
+  view.evalJS(`
+  document.dispatchEvent(new CustomEvent("${eventType}", {
+    detail:${JSON.stringify(data)},
+    bubbles: true,
+    cancelable: true
+  }));`)
+}
 
 export function toGoodsDetail(goodsId) {
   open('shop.goods_detail', { popGesture: 'close' }, { goodsId })
