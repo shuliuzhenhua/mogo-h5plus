@@ -4,5 +4,6 @@
   "user.login": "./src/page/user/login/index.js",
   "user.login_code": "./src/page/user/login_code/index.js",
   "user.login_register": "./src/page/user/login_register/index.js",
+  "user.info": "./src/page/user/info/index.js",
   "system.setting": "./src/page/system/setting/index.js"
 }

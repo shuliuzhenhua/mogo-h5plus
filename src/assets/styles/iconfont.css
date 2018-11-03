@@ -94,6 +94,8 @@
 
 .van-icon-xiangji:before { content: "\e67f"; }
 
+.van-icon-erweima:before { content: "\e606"; }
+
 
 .van-icon {
   font-family: 'vant-icon', 'custom-iconfont' !important;
