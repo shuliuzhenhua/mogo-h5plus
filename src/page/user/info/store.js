@@ -57,7 +57,7 @@ const mutations = {
   },
   updateAvatar(state, payload) {
     const data = payload.data;
-    state.avatar= data.url;
+    state.userInfo.avatar= data.url;
   },
   update(state, payload) {
     const userInfo = payload.userInfo;

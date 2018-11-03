@@ -118,7 +118,8 @@ export default {
     .img
       width: 80px
       img
-        width: 80%
+        width: 64px;
+        height: 64px;
         border-radius 50%
   .gray
     color gray
