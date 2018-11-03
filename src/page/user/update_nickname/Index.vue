@@ -25,10 +25,10 @@ export default {
   },
   methods: {
     onClickRight () {
-      this.$fire('user.info', {nickname: this.nickname})
+      this.$fire('user.info', {nickname: this.nickname});
       setTimeout(() => {
         this.$close()
-      })
+      }, 100)
     }
   }
 };

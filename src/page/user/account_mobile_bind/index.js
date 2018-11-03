@@ -5,13 +5,12 @@ import "@/utils/common";
 import 'styles/reset.css';
 import './plugin.js';
 import store from './store';
-import { close, open, show } from "../../../utils/view";
+import { close, open } from "../../../utils/view";
 import App from "./Index.vue";
 
 Vue.config.productionTip = false;
 Vue.prototype.$close = close;
 Vue.prototype.$open = open;
-Vue.prototype.$show = show;
 
 /* eslint-disable no-new */
 new Vue({

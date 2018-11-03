@@ -3,11 +3,11 @@
       <van-nav-bar title="账号与安全" left-arrow  @click-left="$close()" />
 
       <van-cell-group>
-        <van-cell title="手机号" :value="mobile" label="" @click="" is-link=""></van-cell>
-        <van-cell title="登录密码" :value="password" label="" @click="" is-link=""></van-cell>
+        <van-cell title="手机号" :value="mobile" label="" @click="handleMobileClick(mobile)" is-link=""></van-cell>
+        <van-cell title="登录密码" :value="password" label="" @click="handlePasswordClick(password)" is-link=""></van-cell>
       </van-cell-group>
       <van-cell-group class="auth">
-        <van-cell title="微信账号" :value="wechat" label="" @click="" is-link=""></van-cell>
+        <van-cell title="微信账号" :value="wechat" label="" @click="handleWechatClick(wechat)" is-link=""></van-cell>
       </van-cell-group>
     </div>
 </template>
@@ -19,10 +19,46 @@ export default {
     ...mapState(['mobile', 'password', 'wechat'])
   },
   created () {
+    window.addEventListener('mobileEvent', event => {
+      console.log(event.detail);
+      this.$show('user.account');
+      setTimeout(() => {
+        this.$close('user.account_mobile_bind');
+        this.$close('account_mobile_bind_confirm');
+      }, 200);
+      this.getUserAccount();
+    });
     this.getUserAccount();
   },
   methods: {
-    ...mapActions(['getUserAccount'])
+    ...mapActions(['getUserAccount']),
+    handleMobileClick (mobile) {
+      if (mobile === '未绑定') {
+        this.$open('user.account_mobile_bind', { popGesture: 'close' })
+      } else {
+        alert('更改绑定手机');
+      }
+    },
+    handlePasswordClick (password) {
+      if (this.mobile === '未绑定') {
+        alert('询问是否需要绑定手机')
+      } else {
+
+
+
+        if (password) {
+          alert('去设置密码的页面');
+        } else {
+          alert('去身份验证页面');
+        }
+
+      }
+    },
+    handleWechatClick (wechat) {
+      if (wechat === '未绑定') {
+        alert('绑定微信');
+      }
+    }
   }
 };
 </script>

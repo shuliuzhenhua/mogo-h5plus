@@ -8,5 +8,7 @@
   "user.update_nickname": "./src/page/user/update_nickname/index.js",
   "user.qrcode": "./src/page/user/qrcode/index.js",
   "user.account": "./src/page/user/account/index.js",
+  "user.account_mobile_bind": "./src/page/user/account_mobile_bind/index.js",
+  "user.account_mobile_bind_confirm": "./src/page/user/account_mobile_bind_confirm/index.js",
   "system.setting": "./src/page/system/setting/index.js"
 }

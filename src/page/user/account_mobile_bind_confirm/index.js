@@ -3,15 +3,19 @@
 import Vue from "vue";
 import "@/utils/common";
 import 'styles/reset.css';
-import './plugin.js';
+import 'styles/iconfont.css';
 import store from './store';
-import { close, open, show } from "../../../utils/view";
+import http from '@/utils/http';
+import './plugin.js';
+import { hide, open, fire } from "../../../utils/view";
 import App from "./Index.vue";
 
+
 Vue.config.productionTip = false;
-Vue.prototype.$close = close;
+Vue.prototype.$http = http;
+Vue.prototype.$hide = hide;
 Vue.prototype.$open = open;
-Vue.prototype.$show = show;
+Vue.prototype.$fire = fire;
 
 /* eslint-disable no-new */
 new Vue({

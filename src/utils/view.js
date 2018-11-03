@@ -85,13 +85,13 @@ export function hide() {
  * 跨网页传输数据
  * @param id
  * @param data
+ * @param type
  */
-export function fire(id, data) {
+export function fire(id, data, type = 'event') {
   let view = plus.webview.getWebviewById(id);
-  let eventType = 'event';
   view &&
   view.evalJS(`
-  document.dispatchEvent(new CustomEvent("${eventType}", {
+  document.dispatchEvent(new CustomEvent("${type}", {
     detail:${JSON.stringify(data)},
     bubbles: true,
     cancelable: true
