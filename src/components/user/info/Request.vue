@@ -37,7 +37,7 @@
     </van-row>
     <!--二维码-->
     <van-row class="row">
-      <div @click="toQrCode">
+      <div @click="$open('user.qrcode', { popGesture: 'close' })">
         <van-col span="5" offset="1" class="gray">二维码</van-col>
         <van-col span="15" class="gray">点击查看</van-col>
         <van-col span="1">
@@ -82,9 +82,6 @@ export default {
     ...mapActions(['getUserInfo', 'updateAvatar', 'update']),
     updateSex() {
       this.show = true;
-    },
-    toQrCode() {
-      alert('去看二维码');
     },
     onSelect(item) {
       // 点击选项时默认不会关闭菜单，可以手动关闭
