@@ -19,13 +19,14 @@ export default {
     ...mapState(['mobile', 'password', 'wechat'])
   },
   created () {
-    window.addEventListener('mobileEvent', event => {
-      console.log(event.detail);
+    window.addEventListener('mobileEvent', () => {
       this.$show('user.account');
       setTimeout(() => {
         this.$close('user.account_mobile_bind');
-        this.$close('account_mobile_bind_confirm');
-      }, 200);
+        this.$close('user.account_mobile_bind_confirm');
+        this.$close('user.account_mobile_update');
+        this.$close('user.account_mobile_update_confirm');
+      }, 300);
       this.getUserAccount();
     });
     this.getUserAccount();
@@ -36,7 +37,7 @@ export default {
       if (mobile === '未绑定') {
         this.$open('user.account_mobile_bind', { popGesture: 'close' })
       } else {
-        alert('更改绑定手机');
+        this.$open('user.account_mobile_update', { popGesture: 'close' }, {mobile})
       }
     },
     handlePasswordClick (password) {

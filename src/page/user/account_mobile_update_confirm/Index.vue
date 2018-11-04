@@ -56,8 +56,8 @@ export default {
           code: this.code,
         };
         this.$http
-          .post({
-            url: 'user/bind_mobile',
+          .put({
+            url: 'account/bind_mobile',
             data,
           })
           .then(() => {

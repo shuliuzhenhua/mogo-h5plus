@@ -2,7 +2,7 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import http from '@/utils/http';
 import { Toast, Dialog } from 'vant';
-import {close, current} from "../../../utils/view";
+import {current, close} from "../../../utils/view";
 
 let timer = null;
 
@@ -53,11 +53,12 @@ const mutations = {
   sendSms(state, commit) {
     state.isSend = true;
     http
-      .get({
-        url: '../send_code',
-        params: {
-          mobile: state.mobile,
+      .post({
+        url: 'account/send_bind_mobile_sms',
+        data: {
+          mobile: state.mobile
         },
+        handle: true
       })
       .then(res => {
         clearInterval(timer);
@@ -66,15 +67,14 @@ const mutations = {
       })
       .catch((err) => {
 
-        /**
-         * 弹窗错误并关闭当前窗口
-         */
-        Dialog.alert({
-          message: err.response.data.msg
-        }).then(() => {
-          close()
-        })
-
+          /**
+           * 弹窗错误并关闭当前窗口
+           */
+          Dialog.alert({
+            message: err.response.data.msg
+          }).then(() => {
+            close()
+          })
       });
   },
   getMobile(state, payload) {
