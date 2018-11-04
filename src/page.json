@@ -12,5 +12,6 @@
   "user.account_mobile_bind_confirm": "./src/page/user/account_mobile_bind_confirm/index.js",
   "user.account_mobile_update": "./src/page/user/account_mobile_update/index.js",
   "user.account_mobile_update_confirm": "./src/page/user/account_mobile_update_confirm/index.js",
+  "user.account_password": "./src/page/user/account_password/index.js",
   "system.setting": "./src/page/system/setting/index.js"
 }

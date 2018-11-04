@@ -40,25 +40,25 @@ export default {
         this.$open('user.account_mobile_update', { popGesture: 'close' }, {mobile})
       }
     },
-    handlePasswordClick (password) {
+    handlePasswordClick () {
       if (this.mobile === '未绑定') {
-        alert('询问是否需要绑定手机')
+        this.confirmBindMobile();
       } else {
-
-
-
-        if (password) {
-          alert('去设置密码的页面');
-        } else {
-          alert('去身份验证页面');
-        }
-
+        this.$open('user.account_password', { popGesture: 'close' })
       }
     },
     handleWechatClick (wechat) {
       if (wechat === '未绑定') {
         alert('绑定微信');
       }
+    },
+    confirmBindMobile () {
+      this.$dialog.confirm({
+        title: '确认提醒',
+        message: '需要绑定手机才可以设置密码'
+      }).then(() => {
+        this.$open('user.account_mobile_bind', { popGesture: 'close' })
+      })
     }
   }
 };
