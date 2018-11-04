@@ -27,7 +27,7 @@
     </van-row>
     <!--性别-->
     <van-row class="row">
-      <div @click="updateSex">
+      <div @click="editSex">
         <van-col span="5" offset="1" class="gray">性别</van-col>
         <van-col span="16">{{ userInfo.sex }}</van-col>
         <van-col span="2">
@@ -73,20 +73,20 @@ export default {
   created() {
     this.getUserInfo();
     window.addEventListener('event', event => {
-      this.update({
+      this.updateName({
         name: event.detail.nickname,
       });
     });
   },
   methods: {
-    ...mapActions(['getUserInfo', 'updateAvatar', 'update']),
-    updateSex() {
+    ...mapActions(['getUserInfo', 'updateAvatar', 'updateName', 'updateSex']),
+    editSex() {
       this.show = true;
     },
     onSelect(item) {
       // 点击选项时默认不会关闭菜单，可以手动关闭
       this.show = false;
-      this.update({
+      this.updateSex({
         sex: item.name,
       });
     },

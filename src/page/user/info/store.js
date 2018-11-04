@@ -38,12 +38,20 @@ const actions = {
       })
     })
   },
-  update({ commit }, payload) {
+  updateName({ commit }, payload) {
     http.put({
-      url: 'user',
+      url: 'user/name',
       data: payload
-    }).then(res => {
-      commit('update', {userInfo : res.data})
+    }).then(() => {
+      commit('updateName', payload)
+    })
+  },
+  updateSex({ commit }, payload) {
+    http.put({
+      url: 'user/sex',
+      data: payload
+    }).then(() => {
+      commit('updateSex', payload)
     })
   }
 };
@@ -59,11 +67,11 @@ const mutations = {
     const data = payload.data;
     state.userInfo.avatar= data.url;
   },
-  update(state, payload) {
-    const userInfo = payload.userInfo;
-    state.userInfo.avatar = userInfo.header_img;
-    state.userInfo.nickname = userInfo.name;
-    state.userInfo.sex = userInfo.sex;
+  updateName(state, payload) {
+    state.userInfo.nickname = payload.name
+  },
+  updateSex(state, payload) {
+    state.userInfo.sex = payload.sex
   }
 };
 
