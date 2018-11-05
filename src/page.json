@@ -13,5 +13,6 @@
   "user.account_mobile_update|plusReady": "./src/page/user/account_mobile_update/index.js",
   "user.account_mobile_update_confirm|plusReady": "./src/page/user/account_mobile_update_confirm/index.js",
   "user.account_password|plusReady": "./src/page/user/account_password/index.js",
-  "system.setting|plusReady": "./src/page/system/setting/index.js"
+  "system.setting|plusReady": "./src/page/system/setting/index.js",
+  "system.feedback": "./src/page/system/feedback/index.js"
 }
