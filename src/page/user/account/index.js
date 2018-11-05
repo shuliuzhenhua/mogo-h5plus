@@ -5,10 +5,12 @@ import "@/utils/common";
 import 'styles/reset.css';
 import './plugin.js';
 import store from './store';
+import http from "../../../utils/http";
 import { close, open, show } from "../../../utils/view";
 import App from "./Index.vue";
 
 Vue.config.productionTip = false;
+Vue.prototype.$http = http;
 Vue.prototype.$close = close;
 Vue.prototype.$open = open;
 Vue.prototype.$show = show;
