@@ -1,5 +1,3 @@
-
-
 /**
  * 打开窗口
  * @param id
@@ -49,7 +47,7 @@ export function open(id, style = {}, extras = {}) {
  * @param id
  */
 export function show(id) {
-  plus.webview.show(id, "slide-in-right", 200);
+  plus.webview.show(id, 'slide-in-right', 200);
 }
 
 /**
@@ -68,7 +66,7 @@ export function current() {
 export function close(id = null, style = null) {
   if (id === null) {
     let current = plus.webview.currentWebview();
-    id = current.id
+    id = current.id;
   }
   plus.webview.close(id, style);
 }
@@ -90,16 +88,23 @@ export function hide() {
 export function fire(id, data, type = 'event') {
   let view = plus.webview.getWebviewById(id);
   view &&
-  view.evalJS(`
+    view.evalJS(`
   document.dispatchEvent(new CustomEvent("${type}", {
     detail:${JSON.stringify(data)},
     bubbles: true,
     cancelable: true
-  }));`)
+  }));`);
+}
+
+/**
+ * 取得首页
+ */
+export function launch() {
+  return plus.webview.getLaunchWebview();
 }
 
 export function toGoodsDetail(goodsId) {
-  open('shop.goods_detail', { popGesture: 'close' }, { goodsId })
+  open('shop.goods_detail', { popGesture: 'close' }, { goodsId });
 }
 
 export function toIndex() {

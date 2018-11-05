@@ -3,6 +3,7 @@
   "shop.goods_detail|plusReady": "./src/page/shop/goods_detail/index.js",
   "user.login|plusReady": "./src/page/user/login/index.js",
   "user.login_code|plusReady": "./src/page/user/login_code/index.js",
+  "user.login_password|plusReady": "./src/page/user/login_password/index.js",
   "user.login_register|plusReady": "./src/page/user/login_register/index.js",
   "user.info|plusReady": "./src/page/user/info/index.js",
   "user.update_nickname|plusReady": "./src/page/user/update_nickname/index.js",
