@@ -10,7 +10,7 @@
 <script>
 export default {
   created() {
-    window.addEventListener('loginEvent', event => {
+    window.addEventListener('loginEvent', () => {
       this.$launch().show();
       setTimeout(() => {
         this.$close('user.login');
@@ -18,6 +18,12 @@ export default {
         this.$close('user.login_password');
         this.$close('user.login_register');
       }, 500);
+    });
+    window.addEventListener('goodsDetailEvent', () => {
+      this.$launch().show();
+      setTimeout(() => {
+        this.$close('shop.goods_detail');
+      });
     });
   },
 };

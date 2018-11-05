@@ -9,14 +9,13 @@
 <script>
 import Vue from 'vue';
 import { Vcode } from '../../../plugin/index';
-import { open, toIndex} from "../../../utils/view";
 
 Vue.use(Vcode);
 export default {
   data() {
     return {
-      code: ''
-    }
+      code: '',
+    };
   },
   props: {
     mobile: {
@@ -24,43 +23,50 @@ export default {
     },
   },
   methods: {
-    onFinished () {
-      this.handleBtnSubmit()
+    onFinished() {
+      this.handleBtnSubmit();
     },
-    handleBtnSubmit () {
-      this.$http.post({
-        url: 'connect/mobile',
-        data: {
-          mobile: this.mobile,
-          code: this.code
-        },
-        handle: true
-      }).then(res => {
-        let token = res.data;
-        localStorage.setItem('isLogin', '1');
-        localStorage.setItem('token', token);
-        setTimeout(() => {
-          toIndex();
-        }, 200)
-      }).catch(err => {
-        const data = err.response.data;
-        if (data.error_code === 10006) {
-          open('user.login_register', { popGesture: 'close' }, { mobile: this.mobile, code: this.code })
-        } else {
-          this.$dialog.alert({
-            message: data.msg,
-          });
-        }
-      })
-    }
-  }
+    handleBtnSubmit() {
+      this.$http
+        .post({
+          url: 'connect/mobile',
+          data: {
+            mobile: this.mobile,
+            code: this.code,
+          },
+          handle: true,
+        })
+        .then(res => {
+          let token = res.data;
+          localStorage.setItem('token', token);
+          this.$fire(this.$launch().id, {}, 'loginEvent');
+        })
+        .catch(err => {
+          const data = err.response.data;
+          if (data.error_code === 10006) {
+            this.$open(
+              'user.login_register',
+              { popGesture: 'close' },
+              { mobile: this.mobile, code: this.code }
+            );
+          } else {
+            this.$dialog.alert({
+              message: data.msg,
+            });
+          }
+        });
+    },
+  },
 };
 </script>
 
 <style scoped lang="stylus">
-  @import "~styles/theme.styl"
-  setDisabled();
-  >>> .van-button
-    border-radius 10px;
-    margin 30px 0;
+@import '~styles/theme.styl';
+
+setDisabled();
+
+>>> .van-button {
+  border-radius: 10px;
+  margin: 30px 0;
+}
 </style>

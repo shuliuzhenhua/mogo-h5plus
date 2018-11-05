@@ -12,25 +12,28 @@
 export default {
   props: {
     info: {
-      type: Object
-    }
+      type: Object,
+    },
   },
   watch: {
-    info() {
-
-    }
-  }
-}
+    info() {},
+  },
+};
 </script>
 
 <style scoped lang="stylus">
-  .title
-    font-size: 18px
-  .desc
-    color #c8c7c7
-    font-size: 14px
-  .price
-    font-size: 20px
-    line-height: 24px
-    color red
+.title {
+  font-size: 18px;
+}
+
+.desc {
+  color: #c8c7c7;
+  font-size: 14px;
+}
+
+.price {
+  font-size: 20px;
+  line-height: 24px;
+  color: red;
+}
 </style>

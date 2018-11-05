@@ -64,8 +64,11 @@ export default {
 </script>
 
 <style scoped lang="stylus">
-  .footer
-    color rgba(47, 105, 255, 0.89)
-    .noSend
-      color #6c6c6c
+.footer {
+  color: rgba(47, 105, 255, 0.89);
+
+  .noSend {
+    color: #6c6c6c;
+  }
+}
 </style>

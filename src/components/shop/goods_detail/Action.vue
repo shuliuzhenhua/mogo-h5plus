@@ -8,26 +8,23 @@
 </template>
 
 <script>
-import { toIndex } from "../../../utils/view";
-
 export default {
   methods: {
     onClickCart() {
       alert('单击购物车');
     },
     onClickAddCart() {
-      this.$emit('showSku', 'add')
+      this.$emit('showSku', 'add');
     },
     onClickBuy() {
-      this.$emit('showSku', 'buy')
+      this.$emit('showSku', 'buy');
     },
-    toIndex () {
-      toIndex();
-    }
-  }
-}
+    toIndex() {
+      this.$fire(this.$launch().id, {}, 'goodsDetailEvent');
+    },
+  },
+};
 </script>
 
 <style scoped lang="stylus">
-
 </style>

@@ -1,13 +1,7 @@
 <template>
   <div>
     <van-tabbar v-model="active" style="z-index: 1999">
-      <van-tabbar-item
-        v-for="(tab, index) in tabs"
-        :icon="tab.icon"
-        :to="tab.path"
-        :dot="tab.dot"
-        :info="tab.info"
-        :key="index">
+      <van-tabbar-item v-for="(tab, index) in tabs" :icon="tab.icon" :to="tab.path" :dot="tab.dot" :info="tab.info" :key="index">
         {{tab.name}}
       </van-tabbar-item>
     </van-tabbar>
@@ -92,5 +86,4 @@ export default {
 </script>
 
 <style scoped lang="stylus">
-
 </style>

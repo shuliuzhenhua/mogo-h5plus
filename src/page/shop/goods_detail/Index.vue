@@ -1,45 +1,20 @@
 <template>
   <div class="goods-detail">
-    <van-nav-bar
-      title="商品详情"
-      left-arrow
-      @click-left="$close()"
-    />
+    <van-nav-bar title="商品详情" left-arrow @click-left="$close()" />
     <goods-banner :banner="banner"></goods-banner>
     <goods-info :info="goodsInfo"></goods-info>
 
     <van-cell-group>
-      <van-cell isLink  v-if="skuName" @click="showSku('all')">
+      <van-cell isLink v-if="skuName" @click="showSku('all')">
         {{ skuName }}
       </van-cell>
     </van-cell-group>
 
-    <van-sku
-      v-model="showBase"
-      :sku="sku.sku"
-      :goods="sku.goods"
-      :goods-id="sku.goodsId"
-      :hide-stock="sku.hideStock"
-      @buy-clicked="onBuy"
-      @add-cart="onAddCart"
-      ref="sku"
-    >
+    <van-sku v-model="showBase" :sku="sku.sku" :goods="sku.goods" :goods-id="sku.goodsId" :hide-stock="sku.hideStock" @buy-clicked="onBuy" @add-cart="onAddCart" ref="sku">
 
-      <van-button
-        type="danger"
-        size="large"
-        slot="sku-actions"
-        v-if="type === 'add'"
-        @click="onAddCart"
-      >下一步</van-button>
+      <van-button type="danger" size="large" slot="sku-actions" v-if="type === 'add'" @click="onAddCart">下一步</van-button>
 
-      <van-button
-        type="danger"
-        size="large"
-        slot="sku-actions"
-        v-if="type === 'buy'"
-        @click="onBuy"
-      >下一步</van-button>
+      <van-button type="danger" size="large" slot="sku-actions" v-if="type === 'buy'" @click="onBuy">下一步</van-button>
 
     </van-sku>
 
@@ -54,7 +29,6 @@ import GoodsAction from '@/components/shop/goods_detail/Action';
 import GoodsBanner from '@/components/shop/goods_detail/Banner';
 import GoodsContent from '@/components/shop/goods_detail/Content';
 import GoodsInfo from '@/components/shop/goods_detail/Info';
-import { current } from "../../../utils/view";
 
 export default {
   name: 'goods',
@@ -71,7 +45,7 @@ export default {
     };
   },
   created() {
-    let goodsId = current().goodsId;
+    let goodsId = this.$current().goodsId;
     this.getGoodsDetail({ goodsId });
   },
   computed: {
@@ -95,6 +69,7 @@ export default {
 </script>
 
 <style scoped lang="stylus">
-  .goods-detail
-    padding-bottom: 50px
+.goods-detail {
+  padding-bottom: 50px;
+}
 </style>

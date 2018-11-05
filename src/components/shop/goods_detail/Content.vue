@@ -6,21 +6,24 @@
 </template>
 
 <script>
-  export default {
-    props: {
-      content: {
-        type: String
-      }
-    }
-  }
+export default {
+  props: {
+    content: {
+      type: String,
+    },
+  },
+};
 </script>
 
 <style scoped lang="stylus">
-  .content
-    width: 90%
-    margin: 0 auto
-    >>> img
-      width: 100%
-      display block
-      margin: 10px auto
+.content {
+  width: 90%;
+  margin: 0 auto;
+
+  >>> img {
+    width: 100%;
+    display: block;
+    margin: 10px auto;
+  }
+}
 </style>

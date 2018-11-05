@@ -12,7 +12,7 @@ const descriptor = {
       pattern: /^1[0-9]{10}$|^[569][0-9]{7}$/,
       message: '手机号格式不正确',
     },
-  ]
+  ],
 };
 const validator = new AsyncValidator(descriptor);
 

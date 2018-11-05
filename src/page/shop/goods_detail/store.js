@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 Vue.use(Vuex);
-import { GET_GOODS_DETAIL } from './mutations_type'
+import { GET_GOODS_DETAIL } from './mutations_type';
 import http from '@/utils/http';
 
 const state = {
@@ -11,31 +11,33 @@ const state = {
     desc: '',
     price: '',
     min_price: '',
-    max_price: ''
+    max_price: '',
   },
   content: '',
   sku: {
     sku: {},
     goods: {},
     goodsId: '',
-    hideStock: false
-  }
+    hideStock: false,
+  },
 };
 
 const actions = {
-  getGoodsDetail ({ commit }, payload) {
-    http.get({
-      url: '/mall/goods/' + payload.goodsId
-    }).then(res => {
-      commit(GET_GOODS_DETAIL, {
-        data: res.data
+  getGoodsDetail({ commit }, payload) {
+    http
+      .get({
+        url: '/mall/goods/' + payload.goodsId,
       })
-    })
-  }
+      .then(res => {
+        commit(GET_GOODS_DETAIL, {
+          data: res.data,
+        });
+      });
+  },
 };
 
 const mutations = {
-  [GET_GOODS_DETAIL] (state, payload) {
+  [GET_GOODS_DETAIL](state, payload) {
     const data = payload.data;
     console.log(data);
     state.banner = data.picture;
@@ -45,7 +47,7 @@ const mutations = {
       desc: data.desc,
       price: data.price,
       min_price: data.min_price,
-      max_price: data.max_price
+      max_price: data.max_price,
     };
 
     state.content = data.content;
@@ -54,22 +56,22 @@ const mutations = {
       sku: data.sku,
       goods: data.goods,
       goodsId: data.goodsId,
-      hideStock: data.sku.hide_stock
+      hideStock: data.sku.hide_stock,
     };
-  }
+  },
 };
 
 const getters = {
-  goodsInfo (state) {
+  goodsInfo(state) {
     let info = state.info;
     if (state.sku.none_sku) {
       info.price = '￥' + info.price;
     } else {
-      info.price =  '￥' + info.min_price + ' - ' + '￥' + info.max_price
+      info.price = '￥' + info.min_price + ' - ' + '￥' + info.max_price;
     }
     return info;
   },
-  skuName (state) {
+  skuName(state) {
     let name = '';
     if (!state.sku.sku.none_sku && state.sku.sku.tree) {
       state.sku.sku.tree.map(sku => {
@@ -78,12 +80,12 @@ const getters = {
       name = '选择：' + name;
     }
     return name;
-  }
+  },
 };
 
 export default new Vuex.Store({
   state,
   actions,
   mutations,
-  getters
+  getters,
 });

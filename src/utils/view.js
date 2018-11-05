@@ -106,12 +106,3 @@ export function launch() {
 export function toGoodsDetail(goodsId) {
   open('shop.goods_detail', { popGesture: 'close' }, { goodsId });
 }
-
-export function toIndex() {
-  let current = plus.webview.currentWebview();
-  setTimeout(() => {
-    plus.webview.close(current.id);
-  }, 300);
-  let launch = plus.webview.getLaunchWebview();
-  launch.show();
-}

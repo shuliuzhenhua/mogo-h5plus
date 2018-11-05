@@ -6,15 +6,10 @@ import 'styles/iconfont.css';
 import 'styles/reset.css';
 import store from './store';
 import router from './router';
-import http from './utils/http';
-import { launch, close } from './utils/view';
 import './plugin.js';
 import App from './App';
 
 Vue.config.productionTip = false;
-Vue.prototype.$http = http;
-Vue.prototype.$launch = launch;
-Vue.prototype.$close = close;
 
 /* eslint-disable no-new */
 new Vue({

@@ -9,54 +9,56 @@
 </template>
 
 <script>
-import bg_default from "@/assets/images/user_head_bg.png";
-import { open } from "../../utils/view";
+import bg_default from '@/assets/images/user_head_bg.png';
+import { open } from '../../utils/view';
 
 export default {
-  data(){
+  data() {
     return {
-      background_image: bg_default
-    }
+      background_image: bg_default,
+    };
   },
   props: {
     user_info: {
-      type: Object
-    }
+      type: Object,
+    },
   },
   methods: {
-    toSetting () {
-      open('system.setting', { popGesture: 'close' })
+    toSetting() {
+      open('system.setting', { popGesture: 'close' });
     },
-    toUserInfo () {
-      alert('去用户信息页面')
-    }
-  }
-}
-
+    toUserInfo() {
+      alert('去用户信息页面');
+    },
+  },
+};
 </script>
 
 <style lang="stylus" scoped>
-  .user_header >>> .user_set
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 24px;
-  .user_header {
-    position: relative;
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 130px;
-    box-sizing: border-box;
-    text-align: center;
-    color: #fff;
-    padding-top: 30px;
-  }
-  .user_avatar{
-    margin-bottom: 10px;
-    img{
-      border: 0;
-      border-radius: 50%;
-    }
-  }
+.user_header >>> .user_set {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 24px;
+}
 
+.user_header {
+  position: relative;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 130px;
+  box-sizing: border-box;
+  text-align: center;
+  color: #fff;
+  padding-top: 30px;
+}
+
+.user_avatar {
+  margin-bottom: 10px;
+
+  img {
+    border: 0;
+    border-radius: 50%;
+  }
+}
 </style>

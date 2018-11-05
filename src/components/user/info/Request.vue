@@ -2,7 +2,7 @@
   <div class="form">
     <!--头像-->
     <van-uploader :after-read="updateAvatar">
-    <van-row class="avatar-warp van-hairline--top-bottom">
+      <van-row class="avatar-warp van-hairline--top-bottom">
         <van-col span="5" offset="1">
           <div class="img">
             <img :src="userInfo.avatar" alt="">
@@ -13,7 +13,7 @@
           <van-icon name="arrow" class="gray" />
         </van-col>
 
-    </van-row>
+      </van-row>
     </van-uploader>
     <!--昵称-->
     <van-row class="row nickname">
@@ -48,12 +48,7 @@
         </van-col>
       </div>
 
-      <van-actionsheet
-        v-model="show"
-        :actions="actions"
-        cancel-text="取消"
-        @select="onSelect"
-      />
+      <van-actionsheet v-model="show" :actions="actions" cancel-text="取消" @select="onSelect" />
     </van-row>
   </div>
 </template>
@@ -95,28 +90,43 @@ export default {
 </script>
 
 <style scoped lang="stylus">
-  .van-icon-erweima
-    font-size: 18px
-  .row
-    line-height: 45px;
-    border-bottom 2px solid #f8f8f8
-    font-size: 15px
-  .van-row
-    background white;
-    /*padding: 0 10px*/
+.van-icon-erweima {
+  font-size: 18px;
+}
+
+.row {
+  line-height: 45px;
+  border-bottom: 2px solid #f8f8f8;
+  font-size: 15px;
+}
+
+.van-row {
+  background: white;
+  /* padding: 0 10px */
+  width: 375px;
+}
+
+.avatar-warp {
+  line-height: 80px;
+  height: 80px;
+
+  .van-uploader {
     width: 375px;
-  .avatar-warp
-    line-height: 80px;
-    height: 80px
-    .van-uploader
-      width: 375px;
-      padding: 0 10px
-    .img
-      width: 80px
-      img
-        width: 64px;
-        height: 64px;
-        border-radius 50%
-  .gray
-    color gray
+    padding: 0 10px;
+  }
+
+  .img {
+    width: 80px;
+
+    img {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+    }
+  }
+}
+
+.gray {
+  color: gray;
+}
 </style>
