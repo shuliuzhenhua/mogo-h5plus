@@ -14,6 +14,8 @@
 
 <script>
 import { mapState, mapActions } from 'vuex';
+import {wechat} from "../../../utils/oauth";
+
 export default {
   computed: {
     ...mapState(['mobile', 'password', 'wechat'])
@@ -49,7 +51,7 @@ export default {
     },
     handleWechatClick (wechat) {
       if (wechat === '未绑定') {
-        alert('绑定微信');
+        this.bindWechat();
       }
     },
     confirmBindMobile () {
@@ -58,6 +60,16 @@ export default {
         message: '需要绑定手机才可以设置密码'
       }).then(() => {
         this.$open('user.account_mobile_bind', { popGesture: 'close' })
+      })
+    },
+    bindWechat() {
+      wechat().then(data => {
+        this.$http.post({
+          url: 'account/bind_wechat',
+          data
+        }).then(() => {
+          this.getUserAccount();
+        })
       })
     }
   }
