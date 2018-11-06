@@ -8,8 +8,8 @@ const state = {
   userInfo: {
     avatar: '',
     nickname: 'null',
-    member_no: ''
-  }
+    member_no: '',
+  },
 };
 
 const actions = {
@@ -17,15 +17,13 @@ const actions = {
    * 取得用户资料
    * @param commit
    */
-  getUserInfo ({ commit }) {
-    http.get({
-      url: 'user/self'
-    }).then(res => {
+  getUserInfo({ commit }) {
+    http.get('user/self').then(res => {
       commit('getUserInfo', {
-        userInfo: res.data
-      })
-    })
-  }
+        userInfo: res.data,
+      });
+    });
+  },
 };
 
 const mutations = {
@@ -34,21 +32,21 @@ const mutations = {
     state.userInfo.avatar = userInfo.header_img;
     state.userInfo.nickname = userInfo.name;
     state.userInfo.member_no = userInfo.member_no;
-  }
+  },
 };
 
 const getters = {
-  code (state) {
+  code(state) {
     if (state.userInfo.member_no) {
-      return '{"type": "INFO","member_no": " ' + state.userInfo.member_no +  '"}';
+      return '{"type": "INFO","member_no": " ' + state.userInfo.member_no + '"}';
     }
     return '';
-  }
+  },
 };
 
 export default new Vuex.Store({
   state,
   actions,
   mutations,
-  getters
+  getters,
 });

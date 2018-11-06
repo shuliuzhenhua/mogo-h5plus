@@ -18,17 +18,12 @@ export default {
   },
   methods: {
     handleButClick() {
-      this.$http
-        .post({
-          url: 'feedback',
-          data: this.$data,
-        })
-        .then(res => {
-          this.$toast(res.msg);
-          setTimeout(() => {
-            this.$close();
-          }, 1500);
-        });
+      this.$http.post('feedback', { content: this.content }).then(res => {
+        this.$toast(res.msg);
+        setTimeout(() => {
+          this.$close();
+        }, 1500);
+      });
     },
   },
 };

@@ -1,5 +1,5 @@
 {
-  "index|plusReady": "./src/main.js",
+  "index": "./src/main.js",
   "shop.goods_detail|plusReady": "./src/page/shop/goods_detail/index.js",
   "user.login|plusReady": "./src/page/user/login/index.js",
   "user.login_code|plusReady": "./src/page/user/login_code/index.js",

@@ -42,12 +42,7 @@ export default {
     sendSms() {
       this.isSend = true;
       this.$http
-        .get({
-          url: '../send_code',
-          params: {
-            mobile: this.mobile,
-          },
-        })
+        .get('../send_code', { mobile: this.mobile })
         .then(res => {
           this.timeInit();
           this.$toast(res.msg);

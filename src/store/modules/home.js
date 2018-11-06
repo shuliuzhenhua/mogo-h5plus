@@ -8,15 +8,11 @@ const state = {
 
 const actions = {
   getHomeData({ commit }) {
-    http
-      .get({
-        url: 'mall',
-      })
-      .then(res => {
-        commit(GET_HOME_DATA, {
-          data: res.data,
-        });
+    http.get('mall').then(res => {
+      commit(GET_HOME_DATA, {
+        data: res.data,
       });
+    });
   },
 };
 

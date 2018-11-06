@@ -8,8 +8,8 @@ const state = {
   userInfo: {
     avatar: '',
     sex: 'null',
-    nickname: 'null'
-  }
+    nickname: 'null',
+  },
 };
 
 const actions = {
@@ -17,43 +17,32 @@ const actions = {
    * 取得用户资料
    * @param commit
    */
-  getUserInfo ({ commit }) {
-    http.get({
-      url: 'user/self'
-    }).then(res => {
+  getUserInfo({ commit }) {
+    http.get('user/self').then(res => {
       commit('getUserInfo', {
-        userInfo: res.data
-      })
-    })
+        userInfo: res.data,
+      });
+    });
   },
   updateAvatar({ commit }, file) {
     let data = new FormData();
     data.append('img', file.file);
-    http.post({
-      url: 'user/header_img',
-      data
-    }).then(res => {
+    http.post('user/header_img', data).then(res => {
       commit('updateAvatar', {
-        data: res.data
-      })
-    })
+        data: res.data,
+      });
+    });
   },
   updateName({ commit }, payload) {
-    http.put({
-      url: 'user/name',
-      data: payload
-    }).then(() => {
-      commit('updateName', payload)
-    })
+    http.put('user/name', payload).then(() => {
+      commit('updateName', payload);
+    });
   },
   updateSex({ commit }, payload) {
-    http.put({
-      url: 'user/sex',
-      data: payload
-    }).then(() => {
-      commit('updateSex', payload)
-    })
-  }
+    http.put('user/sex', payload).then(() => {
+      commit('updateSex', payload);
+    });
+  },
 };
 
 const mutations = {
@@ -65,14 +54,14 @@ const mutations = {
   },
   updateAvatar(state, payload) {
     const data = payload.data;
-    state.userInfo.avatar= data.url;
+    state.userInfo.avatar = data.url;
   },
   updateName(state, payload) {
-    state.userInfo.nickname = payload.name
+    state.userInfo.nickname = payload.name;
   },
   updateSex(state, payload) {
-    state.userInfo.sex = payload.sex
-  }
+    state.userInfo.sex = payload.sex;
+  },
 };
 
 const getters = {};
@@ -81,5 +70,5 @@ export default new Vuex.Store({
   state,
   actions,
   mutations,
-  getters
+  getters,
 });

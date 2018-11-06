@@ -41,14 +41,9 @@ export default {
           mobile: this.mobile,
           code: this.code,
         };
-        this.$http
-          .post({
-            url: 'user/bind_mobile',
-            data,
-          })
-          .then(() => {
-            this.$fire('user.account', { mobile: this.mobile }, 'mobileEvent');
-          });
+        this.$http.post('user/bind_mobile', data).then(() => {
+          this.$fire('user.account', { mobile: this.mobile }, 'mobileEvent');
+        });
       }
     },
   },

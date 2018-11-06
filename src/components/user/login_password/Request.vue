@@ -47,10 +47,7 @@ export default {
       validator(this.$data).then(() => {
         this.loading = true;
         this.$http
-          .post({
-            url: 'token/user',
-            data: this.$data,
-          })
+          .post('token/user', { mobile: this.mobile, password: this.password })
           .then(res => {
             const data = res.data;
             localStorage.setItem('token', data.token);

@@ -7,7 +7,7 @@ Vue.use(Vuex);
 const state = {
   mobile: '',
   password: '',
-  wechat: ''
+  wechat: '',
 };
 
 const actions = {
@@ -15,15 +15,13 @@ const actions = {
    * 取得用户账号安全信息
    * @param commit
    */
-  getUserAccount ({ commit }) {
-    http.get({
-      url: 'user/account'
-    }).then(res => {
+  getUserAccount({ commit }) {
+    http.get('user/account').then(res => {
       commit('getUserAccount', {
-        account: res.data
-      })
-    })
-  }
+        account: res.data,
+      });
+    });
+  },
 };
 
 const mutations = {
@@ -32,7 +30,7 @@ const mutations = {
     state.mobile = account.mobile;
     state.password = account.password;
     state.wechat = account.wechat;
-  }
+  },
 };
 
 const getters = {};
@@ -41,5 +39,5 @@ export default new Vuex.Store({
   state,
   actions,
   mutations,
-  getters
+  getters,
 });

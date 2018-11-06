@@ -44,16 +44,11 @@ export default {
       data.append('mobile', this.mobile);
       data.append('code', this.code);
       data.append('nickname', this.nickname);
-      this.$http
-        .post({
-          url: 'connect/mobile/register',
-          data,
-        })
-        .then(res => {
-          let token = res.data;
-          localStorage.setItem('token', token);
-          this.$fire(this.$launch().id, {}, 'loginEvent');
-        });
+      this.$http.post('connect/mobile/register', data).then(res => {
+        let token = res.data;
+        localStorage.setItem('token', token);
+        this.$fire(this.$launch().id, {}, 'loginEvent');
+      });
     },
   },
 };

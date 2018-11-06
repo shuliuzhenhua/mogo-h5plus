@@ -28,13 +28,14 @@ export default {
     },
     handleBtnSubmit() {
       this.$http
-        .post({
+        .request({
           url: 'connect/mobile',
           data: {
             mobile: this.mobile,
             code: this.code,
           },
           handle: true,
+          methods: 'post',
         })
         .then(res => {
           let token = res.data;
@@ -42,7 +43,7 @@ export default {
           this.$fire(this.$launch().id, {}, 'loginEvent');
         })
         .catch(err => {
-          const data = err.response.data;
+          const data = err.data;
           if (data.error_code === 10006) {
             this.$open(
               'user.login_register',

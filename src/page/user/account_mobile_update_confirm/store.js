@@ -2,7 +2,7 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import http from '@/utils/http';
 import { Toast, Dialog } from 'vant';
-import {current, close} from "../../../utils/view";
+import { current, close } from '../../../utils/view';
 
 let timer = null;
 
@@ -11,20 +11,20 @@ Vue.use(Vuex);
 const state = {
   mobile: '',
   isSend: true,
-  content: '60 秒后重新发送'
+  content: '60 秒后重新发送',
 };
 
 const actions = {
-  timeInit({commit}) {
-    commit('timeInit')
+  timeInit({ commit }) {
+    commit('timeInit');
   },
-  sendSms({commit}) {
-    commit('sendSms')
+  sendSms({ commit }) {
+    commit('sendSms');
   },
-  getMobile({commit}) {
+  getMobile({ commit }) {
     let mobile = current().mobile;
-    commit('getMobile', {mobile})
-  }
+    commit('getMobile', { mobile });
+  },
 };
 
 const mutations = {
@@ -53,33 +53,33 @@ const mutations = {
   sendSms(state, commit) {
     state.isSend = true;
     http
-      .post({
+      .request({
         url: 'account/send_bind_mobile_sms',
         data: {
-          mobile: state.mobile
+          mobile: state.mobile,
         },
-        handle: true
+        handle: true,
+        methods: 'post',
       })
       .then(res => {
         clearInterval(timer);
         this.dispatch('timeInit');
         Toast(res.msg);
       })
-      .catch((err) => {
-
-          /**
-           * 弹窗错误并关闭当前窗口
-           */
-          Dialog.alert({
-            message: err.response.data.msg
-          }).then(() => {
-            close()
-          })
+      .catch(err => {
+        /**
+         * 弹窗错误并关闭当前窗口
+         */
+        Dialog.alert({
+          message: err.msg,
+        }).then(() => {
+          close();
+        });
       });
   },
   getMobile(state, payload) {
-    state.mobile = payload.mobile
-  }
+    state.mobile = payload.mobile;
+  },
 };
 
 const getters = {};
@@ -88,5 +88,5 @@ export default new Vuex.Store({
   state,
   actions,
   mutations,
-  getters
+  getters,
 });

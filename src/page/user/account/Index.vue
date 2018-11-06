@@ -72,15 +72,10 @@ export default {
     // 绑定微信
     bindWechat() {
       wechat().then(data => {
-        this.$http
-          .post({
-            url: 'account/bind_wechat',
-            data,
-          })
-          .then(() => {
-            this.$toast('绑定成功');
-            this.getUserAccount();
-          });
+        this.$http.post('account/bind_wechat', data).then(() => {
+          this.$toast('绑定成功');
+          this.getUserAccount();
+        });
       });
     },
     /**
@@ -105,17 +100,19 @@ export default {
      */
     confirmUnBindWechat() {
       this.$http
-        .delete({
+        .request({
           url: 'account/wechat',
+          hadnle: true,
+          methods: 'delete',
         })
         .then(() => {
           this.$toast('解绑成功');
           this.getUserAccount();
         })
         .catch(err => {
-          if (err.response.data.error_code !== 40004) {
+          if (error_code !== 40004) {
             this.$dialog.alert({
-              message: err.response.data.msg,
+              message: err.msg,
             });
           } else {
             this.confirmBindMobileByWechat();

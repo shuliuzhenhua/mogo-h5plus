@@ -28,12 +28,7 @@ export default {
   },
   created() {
     this.mobile = this.$current().mobile;
-    this.$http.get({
-      url: '../send_code',
-      params: {
-        mobile: this.mobile,
-      },
-    });
+    this.$http.get('../send_code', { mobile: this.mobile });
   },
 };
 </script>

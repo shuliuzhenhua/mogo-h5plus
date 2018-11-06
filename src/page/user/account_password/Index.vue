@@ -30,12 +30,9 @@ export default {
   methods: {
     onClickRight() {
       this.$http
-        .post({
-          url: 'user/update_pwd',
-          data: {
-            password: this.password,
-            confirmPwd: this.confirmPwd,
-          },
+        .post('user/update_pwd', {
+          password: this.password,
+          confirmPwd: this.confirmPwd,
         })
         .then(() => {
           this.$close();

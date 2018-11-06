@@ -24,15 +24,11 @@ const state = {
 
 const actions = {
   getGoodsDetail({ commit }, payload) {
-    http
-      .get({
-        url: '/mall/goods/' + payload.goodsId,
-      })
-      .then(res => {
-        commit(GET_GOODS_DETAIL, {
-          data: res.data,
-        });
+    http.get('/mall/goods/' + payload.goodsId).then(res => {
+      commit(GET_GOODS_DETAIL, {
+        data: res.data,
       });
+    });
   },
 };
 

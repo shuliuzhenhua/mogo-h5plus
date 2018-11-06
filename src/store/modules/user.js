@@ -3,31 +3,24 @@ import http from '../../utils/http';
 
 const state = {
   userInfo: {},
-  statusCount: {}
+  statusCount: {},
 };
 
 const actions = {
   getUserInfo({ commit }) {
-    http
-      .get({
-        url: 'user/self',
-      })
-      .then(res => {
-        commit(GET_USER_INFO, {
-          data: res.data,
-        });
+    http.get('user/self').then(res => {
+      commit(GET_USER_INFO, {
+        data: res.data,
       });
+    });
   },
   getOrderStatusCount({ commit }) {
-    http.get({
-      url: 'mall/order/count'
-    }).then((res) => {
+    http.get('mall/order/count').then(res => {
       commit(GET_ORDER_STATUS_COUNT, {
         data: res.data,
       });
-
-    })
-  }
+    });
+  },
 };
 
 const mutations = {
@@ -36,7 +29,7 @@ const mutations = {
   },
   [GET_ORDER_STATUS_COUNT](state, payload) {
     state.statusCount = payload.data;
-  }
+  },
 };
 
 export default {
